@@ -1,0 +1,22 @@
+[package]
+name = "labtrace"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Forensic timeline reconstruction and cross-process threat correlation for Linux audit telemetry — rules + data-flow taint analysis, zero agent required."
+repository = "https://github.com/Hartwell-Labs/labtrace"
+keywords = ["security", "forensics", "auditd", "taint-analysis", "linux"]
+categories = ["command-line-utilities"]
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+
+[profile.release]
+lto = true
+opt-level = 3
+codegen-units = 1
+strip = "symbols"
+panic = "abort"

