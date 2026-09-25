@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+      - name: Tests
+        run: cargo test --release
+      - name: Clippy
+        run: cargo clippy --release -- -D warnings || true
+      - name: Build (release, stripped)
+        run: cargo build --release
+
+  # LabTrace as a GitHub Action: incident findings land in the Security tab (SARIF)
+  self-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo build --release
+      - name: Demo scan produces SARIF artifact
+        run: ./target/release/labtrace demo/incident-demo.jsonl --format sarif > labtrace.sarif
+      - uses: actions/upload-artifact@v4
+        with:
+          name: labtrace-sarif
+          path: labtrace.sarif
